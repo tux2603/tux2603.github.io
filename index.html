@@ -8,7 +8,7 @@
 <html>
 <head>
   <!-- Specify what set of characters are being used. UTF-8 lets us use basically any character in the world.
-      If your page is displaying random characters--stuff like "this isnât right"--there is probably something
+      If your page is displaying random characters-stuff like "this isnât right"-there is probably something
       amiss with either this line or the way the file was saved. -->
   <meta charset="utf-8">
   
@@ -17,12 +17,19 @@
   
   <!-- Basic description and name of the author of the page. These will be used by things like search engines,
       and are not actually displayed anywhere -->
+  <meta name="description" content="An HTML cheat-sheet">
+  <meta name="author" content="tux2603">
+
+  <!-- Gives the browser a link to some resource used by the site. In this case, it is a css stylesheet called
+    stylesheet.css. 'rel' stands for 'relation', and 'href' stands for hyper text reference... basically the 
+    relation that the given linked item has to the site, and the location the linked item-->
+  <link rel="stylesheet" type="text/css" href="/stylesheet.css" />
 </head>
 
 <body>
   <!-- h1 stands for 'header level 1'. It is the largest header that is available, and should be used only for
       the most important text on the page. -->
-  <h1>tux2603's HTML Cheat-Sheet</h1>
+  <h1 id="pageTitle">tux2603's HTML Cheat-Sheet</h1>
   
   <!-- p stands for 'paragraph'. It is used for just normal text... -->
   <p>This page was created for the use of anyone who is learning HTML, or already knows HTML and is a
@@ -42,7 +49,7 @@
       <!-- a stands for 'anchor', which doesn't really make very much sense... The <a> element is used to 
           create a link, where text in quotes after href is where the page that the link goes to. Anything
           inside the tag is the what will be displayed as the link, usually as blue underlined text -->
-      <a href="https://tux2603.github.io/template.html">Basic HTML5 template</a>
+      <a href="/template.html">Basic HTML5 template</a>
     </li>
   </ul>
   

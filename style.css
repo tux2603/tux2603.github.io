@@ -1,0 +1,23 @@
+/* This is a css (cascading style sheet) file, and it works a little differently than html.
+  instead of comments being surrounded eith <!-- and -->, they are surrounded by /* and */
+
+/* The basic format for css is:
+  what group we want to style {
+    style-property: value for property;
+  }
+
+  The curly braces are used to enclose all of the styles for any particular group. In
+  general, css groups should be ordered from least specific (affects the most things on the page)
+  to least specific (impacts the lease amount of things on the page) */
+
+/* These styles will apply to the <body> element of the page */
+body {
+  /* Makes it so the body can't be wider than 960 pixels */
+  max-width: 960px;
+}
+
+/* These styles will apply to the element with the id "pageTitle" */
+#pageTitle {
+  /* Adds a bottom border that is solid, one pixel thick, black line */
+  border-bottom: solid 1px black;
+}
