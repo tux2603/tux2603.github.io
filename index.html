@@ -1,12 +1,50 @@
 <!DOCTYPE html>
 
+<!-- Homepage of the HTML5 cheat-sheet site. -->
+
+<!-- Anything that appears between a the marks at the beginning and end of the previous line is a comment, 
+    and will not be displayed by the browser. Comments are used to explain or docuemnt bits of code -->
+
 <html>
 <head>
-  <meta charset="utf-8" />
+  <!-- Specify what set of characters are being used. UTF-8 lets us use basically any character in the world.
+      If your page is displaying radnom characters--stuff like this isnât right)--there is probably something
+      amiss with either this line or the way the file was saved. -->
+  <meta charset="utf-8">
+  
+  <!-- Title of the page as it will be displayed in the browser tab -->
   <title>tux2603's HTML Cheat-Sheet</title>
+  
+  <!-- Basic description and name of the authorr of the page. These will be used by things like search engines,
+      and are not actually displayed anywhere -->
 </head>
 
 <body>
+  <!-- h1 stands for 'header level 1'. It is the largest header that is available, and should be used only for
+      the most important text on the page. -->
   <h1>tux2603's HTML Cheat-Sheet</h1>
+  
+  <!-- p stands for 'paragraph'. It is used for just normal text... -->
+  <p>This page was created for the use of anyone who is learning HTML, or already knows HTML and is a
+    bit forgetful (like me...). Anything on the page is open-source and under the MIT license, which means
+    you can pretty much do whatever you want with it. If you in a class, please remember to follow all 
+    rules for reusing and citing other people's code.</p>
+  
+  <!-- h2 stands for 'header level 2'. Use it for important stuff that isn't the main page focus -->
+  <h2>Templates</h2>
+  
+  <!-- ul stands for 'unordered list'. It will display a list of items with a bullet (∙) before each item. -->
+  <ul>
+    
+    <!-- li stands for 'list item'. It is within a list (such as <ul> or <ol>) to list out all the items
+        that are in that list. Each item in the list must be inside its own <li> -->
+    <li>
+      <!-- a stands for 'anchor', which doesn't really make very much sense... The <a> element is used to 
+          create a link, where text in quotes after href is where the page that the link goes to. Anything
+          inside the tag is the what will be displayed as the link, usually as blue inderlined text -->
+      <a href="https://tux2603.github.io/template.html">Basic HTML5 template</a>
+    </li>
+  </ul>
+  
 </body>
 </html>
