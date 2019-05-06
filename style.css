@@ -20,7 +20,8 @@ body {
   margin: auto;
 }
 
-/* These styles will apply to the element with the id "pageTitle" */
+/* These styles will apply to the element with the id "pageTitle" 
+  And yes, it uses hashtags.*/
 #pageTitle {
   /* Adds a bottom border that is solid, one pixel thick, black line */
   border-bottom: solid 1px black;
