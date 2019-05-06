@@ -14,6 +14,10 @@
 body {
   /* Makes it so the body can't be wider than 960 pixels */
   max-width: 960px;
+
+  /* Margin refers to the spacing around html elements, making the margins automatic
+    will make the elements centered on the page */
+  margin: auto;
 }
 
 /* These styles will apply to the element with the id "pageTitle" */
