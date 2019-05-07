@@ -19,6 +19,20 @@
         margin: 0;
       }
 
+      .elemName {
+        font-style: italic;
+      }
+
+      .elemName::before {
+        font-style: italic;
+        content: "<";
+      }
+
+      .elemName::after {
+        font-style: italic;
+        content: ">";
+      }
+
       #definitionList {
         /* Makes it so that bullets are not displayed for this list */
         list-style: none;
@@ -42,7 +56,6 @@
       }
 
       #definitionList > li > h3 {
-        font-style: italic;
         padding: 0 2em;
       }
     </style>
@@ -83,7 +96,7 @@
 
     <ul id="definitionList">
       <li>
-        <h3 id="def-a">&lt;a&gt;</h3>
+        <h3 id="def-a" class="elemName">a</h3>
         <ul>
           <li><b>Stands for</b> Anchor</li>
           <li><b>Use</b> Making links</li>
@@ -115,6 +128,21 @@
       </li>
 
       <a id="B" class="anchor"></a>
+
+      <li>
+        <h3 id="def-body" class="elemName">body</h3>
+        <ul>
+          <li><b>Stands for</b> body</li>
+          <li><b>Use</b> holds the main content of the page</li>
+          <li>
+            <b><i>NOTE</i></b> there can only be one
+            <span class="elemName">body</span> element per page
+          </li>
+        </ul>
+
+        <p class="toTop"><a href="#TOP">return to top</a></p>
+      </li>
+
       <a id="C" class="anchor"></a>
       <a id="D" class="anchor"></a>
       <a id="E" class="anchor"></a>
@@ -123,7 +151,42 @@
       <a id="H" class="anchor"></a>
 
       <li>
-        <h3 id="def-h1">&lt;h1&gt;</h3>
+        <h3 id="def-body" class="elemName">head</h3>
+        <ul>
+          <li><b>Stands for</b> head</li>
+          <li>
+            <b>Use</b> holds the meta-information (such as title, author, and
+            style sheets) for the page. Not to be confused with
+            <a href="#def-header" class="elemName">header</a>
+          </li>
+          <li>
+            <b><i>NOTE</i></b> there can only be one
+            <span class="elemName">head</span> element per page
+          </li>
+        </ul>
+
+        <p class="toTop"><a href="#TOP">return to top</a></p>
+      </li>
+
+      <li>
+        <h3 id="def-html" class="elemName">html</h3>
+        <ul>
+          <li><b>Stands for</b> hyper-text markup language</li>
+          <li>
+            <b>Use</b> the very first element in the page. All other elements
+            must be inside of an <span class="elemName">html</span> element
+          </li>
+          <li>
+            <b><i>NOTE</i></b> there can be only one
+            <span class="elemName">html</span> element per page
+          </li>
+        </ul>
+
+        <p class="toTop"><a href="#TOP">return to top</a></p>
+      </li>
+
+      <li>
+        <h3 id="def-h1" class="elemName">h1</h3>
         <ul>
           <li><b>Stands for</b> Header level 1</li>
           <li>
@@ -135,7 +198,7 @@
       </li>
 
       <li>
-        <h3 id="def-h2">&lt;h2&gt;</h3>
+        <h3 id="def-h2" class="elemName">h2</h3>
         <ul>
           <li><b>Stands for</b> Header level 2</li>
           <li>
@@ -147,11 +210,12 @@
       </li>
 
       <li>
-        <h3 id="def-h3">&lt;h3&gt;</h3>
+        <h3 id="def-h3" class="elemName">h3</h3>
         <ul>
           <li><b>Stands for</b> Header level 3</li>
           <li>
-            <b>Use</b> The next most important headers on the page after h2
+            <b>Use</b> The next most important headers on the page after
+            <a href="#def-h2" class="elemName">h2</a>
           </li>
         </ul>
 
@@ -159,11 +223,12 @@
       </li>
 
       <li>
-        <h3 id="def-h4">&lt;h4&gt;</h3>
+        <h3 id="def-h4" class="elemName">h4</h3>
         <ul>
           <li><b>Stands for</b> Header level 4</li>
           <li>
-            <b>Use</b> The next most important headers on the page after h3
+            <b>Use</b> The next most important headers on the page after
+            <a href="#def-h3" class="elemName">h3</a>
           </li>
         </ul>
 
@@ -171,11 +236,12 @@
       </li>
 
       <li>
-        <h3 id="def-h5">&lt;h5&gt;</h3>
+        <h3 id="def-h5" class="elemName">h5</h3>
         <ul>
           <li><b>Stands for</b> Header level 5</li>
           <li>
-            <b>Use</b> The next most important headers on the page after h4
+            <b>Use</b> The next most important headers on the page after
+            <a href="#def-h4" class="elemName">h4</a>
           </li>
         </ul>
 
@@ -183,11 +249,12 @@
       </li>
 
       <li>
-        <h3 id="def-h6">&lt;h6&gt;</h3>
+        <h3 id="def-h6" class="elemName">h6</h3>
         <ul>
           <li><b>Stands for</b> Header level 6</li>
           <li>
-            <b>Use</b> The next most important headers on the page after h5
+            <b>Use</b> The next most important headers on the page after
+            <a href="#def-h5" class="elemName">h5</a>
           </li>
         </ul>
 
@@ -204,7 +271,7 @@
       <a id="P" class="anchor"></a>
 
       <li>
-        <h3 id="def-p">&lt;p&gt;</h3>
+        <h3 id="def-p" class="elemName">p</h3>
         <ul>
           <li><b>Stands for</b> Paragraph</li>
           <li><b>Use</b> Normal page text</li>
@@ -226,7 +293,7 @@
 
       <!--
       <li>
-        <h3 id="def-">&lt;&gt;</h3>
+        <h3 id="def-" class="elemName"></h3>
         <ul>
           <li><b>Stands for</b></li>
           <li><b>Use</b></li>
