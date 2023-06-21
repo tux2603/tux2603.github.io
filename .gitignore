@@ -1,2 +1,15 @@
+.vscode
 
-.vscode/
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+Gemfile
+Gemfile.lock
+gemfiles/
+node_modules/
+vendor/bundle/
+vendor/cache/
+vendor/gems/
+vendor/ruby/

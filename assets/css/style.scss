@@ -1,0 +1,18 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+span.post-data {
+    font-style: italic;
+    font-size: 0.8em;
+    color: #999;
+}
+
+span.post-data::before {
+    content: "(";
+}
+
+span.post-data::after {
+    content: ")";
+}
