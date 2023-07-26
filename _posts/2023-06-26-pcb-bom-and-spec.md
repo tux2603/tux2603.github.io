@@ -1,0 +1,105 @@
+---
+layout: tutorial
+title: "Writing Your Specifications and BOM"
+series:
+  id: permanent_project
+  title: "Making Your Project Permanent"
+  index: 1
+date: 2023-06-26 11:34:18 -0500
+categories: tutorials
+tags:
+  - tutorial
+  - pcb
+  - diy
+description: "An overview of how to write quick specifications for your DIY project, and then using those specifications to create a bill of materials (BOM) for your project."
+published: false
+---
+
+If you're making a DIY electronics project that will be in use for long periods of time, it's probably a good idea to build it with something a bit more permanent than breadboards and jumper wires. There are a couple different ways of doing this, such as using [perfboards](https://www.digikey.com/en/maker/blogs/2022/start-building-cleaner-perfboard-projects-using-these-simple-tips) that function in the same way as solderless breadboards, but let you permanently solder all your components in place. If you want something a bit cleaner looking or if you want to make the project more compact, you can also make a custom PCB for your project. Designing a PCB from the ground up can be a seem like a daunting task full of potential pitfalls, but with the right preparation it can be a fairly straightforward process. This series of tutorials will walk you through the process of designing a fully custom PCB from the ground up, starting with writing specifications for your project and ending with a fully assembled (and hopefully functional) PCB.
+
+For this tutorial series, we'll walk through the design an construction of a small magnetic LED light. The light should be able to stick to a wide variety of magnetic surfaces, have multiple brightness settings, and a rechargeable battery. A simple project like this is a good starting point for learning how to design your own PCB, as it doesn't require any particularly complicated components or circuits, but still has enough features to be a decent example of the design process. Your project likely will be significantly different from this example, but the general process of decisions, planning, and design will be applicable to a wide variety of DIY projects.
+
+# Writing Your Specifications
+
+Before you start designing your PCB, it's good to have a clear idea of what exactly you want to make by writing a set of specifications for your project. That way, you'll have a clear set of goals to work towards and you'll be far less likely to need to make major changes to your design later on. For a DIY project, these specifications don't need to be anything fancy, just a simple list of the features you want your project to have and any constraints that you need to work within. Some good questions to ask yourself when writing your specifications are:
+
+- How will your project be powered?
+- How big will your project be?
+- How will your project be assembled?
+- What inputs and outputs will your project have?
+- What components will you need?
+- What is your budget?
+
+## Power
+
+The two main options are using an external power supply or using batteries. External power supplies can be things like "wall wart" AC adapters or USB cables. Batteries could be either non-rechargeable and rechargeable. In order to pick the proper power source, you'll need to know what voltage your components require, how much current they draw, and if you're using batteries, how long the batteries will need to last. For extremely low-power design you might also want to consider using some form of energy harvesting, such as solar panels, to power your project.
+
+Battery capacity will usually be given in one of two basic units, amp-hour (Ah) and milliamp-hour (mAh). You'll also see batteries with their capacity expressed in watt-hours (Wh) or milliwatt-hours (mWh), which measures roughly the same thing, but also takes the voltage of the battery into account. If you want to convert a Wh rating into an Ah rating, all you need to do is divide the Wh rating by the voltage of the battery. For example, if you have a 3.7V battery with a 1.85Wh rating, you divide 1.85Wh by 3.7V to get 0.5Ah or 500mAh.
+
+The magnetic light will be powered off of a small rechargeable battery, and for convenience it would be nice if the battery could be charged with a USB cable. The light will only need to run for an hour or two at a time, so the battery doesn't need to have an overly large capacity, something around 200mAh should be plenty. The multiple brightness will be controlled by a microcontroller, so the battery should have a voltage somewhere between 3.3V and 5V. That way, the microcontroller can be powered directly off of the battery without needing a voltage regulator.
+
+## Size and Shape
+
+Project size and shape will dictate what components you can choose, including what batteries you can use. As an extreme example, you wouldn't want to use a large lead-acid battery in a project that's designed to be worn on your wrist. For very small projects, you'll want to consider using as many surface mount components as possible, as they take up less space than your through-hole counterparts. Most surface mount components come in a few different sizes, or footprints. Generally speaking, for DIY projects you'll want to avoid the smallest footprints, but how small you'll be able to go will depend on your assembly method and soldering skills.
+
+The light will need to be small and light in order to be stuck to as many different magnetic surfaces as possible. Beyond that though, there aren't very many hard requirements for size and shape.
+
+## Assembly
+
+There are a few different ways to assemble a PCB. The simplest is to just solder all of the components by hand using an every day soldering iron, but that can be very time consuming and tedious especially with PCBs that use a lot of small surface mount components. With a little bit of soldering experience and a steady hand it's possible to hand solder components as small as an 0805 or even 0603, but for anything smaller than that you might want to look into alternative assembly methids. If you decide that you don't want to solder components by hand, you can use solder paste and a [hot air gun](https://mansfield-devine.com/speculatrix/2018/05/adventures-in-smd-soldering-part-2-hot-air/) or [hot plate](https://reprap.org/wiki/HotplateReflowTechnique) instead. Alternatively, many PCB fabrications services also offer assembly services where they'll solder all the components onto your PCB for you, but this will increase the fabrication cost significantly.
+
+The light will be assembled by hand, but still needs to be relatively small. To keep the assembly simple, the light won't use anything smaller than an 0805 package. The light shouldn't get too hot either, so it won't need any heat sinks or fans and can be placed in a 3D printed case.
+
+## Inputs and Outputs
+
+Finally, you get to decide what inputs and outputs you want your project to have. Inputs could be things like buttons, switches, or sensors, while outputs could be things like LEDs, motors, speakers, or displays. There's a lot of room for fun and creativity here, so feel free to really customize your project at this stage. Just know that the more complicated you make this part, the higher power and more expensive microcontroller you'll need and the more work you'll need to do programming it.
+
+The inputs and outputs for the light will be very simple, just a single push button to turn the light on and off and cycle through the brightness settings and some small number of LEDs to provide the light. The LEDs should be white and fairly bright, and each LED will need its own current limiting resistor. The LEDs will be controlled by the microcontroller, most likely off of a single shared pin, so there should be some sort of transistor to control the LEDs. We'll say that there will be for LEDs for this design, but the exact number doesn't really matter.
+
+## Components
+
+In addition to deciding what sort of power circuits, displays, buttons, etc that you want to use for your project, you'll also want to write some specifications for any other important components that you'll need. One major component in many projects is a microcontroller. For your microcontroller you'll need to think about how many GPIO pins you'll need, how powerful it'll need to be, how much memory it needs, and if you need any special features like built-in USB support. If you want to simplify your design, you can use a small, pre-made module that includes a microcontroller and all the necessary support components, such as an Arduino Nano, Raspberry Pi Pico, or numerous other options. If you want to go the more advanced route and use a bare microcontroller, you'll need to make sure you have all of the necessary external components required for the microcontroller to function, such as a crystal oscillator, voltage regulator, and power supply decoupling capacitors.
+
+For the light, the microcontroller will only be generating a PWM signal and monitoring the state of a single button, so it won't need to be very powerful at all and will only require two GPIO pins. Because the requirements are so simple, we'll use a bare microcontroller instead of a pre-made module, preferably one that doesn't require any external components to operate. To keep the design simple, we'll also use an external programmer connected by some pin headers.
+
+## Example Specifications
+
+- Power
+  - Powered by a small rechargeable battery
+  - Battery should be able to be charged with a USB cable
+  - Battery should have a capacity of around 200mAh
+  - Battery should have a voltage between 3.3V and 5V
+- Size and Shape
+  - As small as possible, avoid large components and batteries
+  - Shape doesn't really matter, probably a circle or rectangle
+- Assembly
+  - Assembled by hand
+  - No components smaller than 0805
+  - 3D printed case
+- Inputs and Outputs
+  - Single push button to turn the light on and off and cycle through brightness settings
+  - Multiple LEDs to provide the light
+    - LEDs should be white and fairly bright
+    - Each LED will need a current limiting resistor
+    - LEDs controlled by a microcontroller and transistors
+- Components
+  - A microcontroller
+    - At least two GPIO pins
+    - Operates on 3.3V - 5V
+    - No constraints on speed or memory
+    - Avoid models that require external components like crystal oscillators
+  - Pin headers for programming the microcontroller
+  - Four LEDs and corresponding current limiting resistors
+  - A transistor that can handle the current of all the LEDs
+  - A push button
+  - A small rechargeable battery
+    - Capacity of around 200mAh
+    - Voltage that falls in the operating range of the microcontroller
+  - A battery charging circuit with a USB port
+
+# Writing Your Bill of Materials
+
+Now that you have a general idea of what sort of components you'll need for your project, it's time to start putting together a bill of materials. A bill of materials, or BOM, is a list of all the components you'll need to build a project, including the number of each component that you'll need and a part number or other sourcing information. While it's possible to source all of your components from main-stream sites like amazon or ebay, it'll be much easier to find the exact components you need if you go to a dedicated electronics supplier. There are several good options out there for electronics suppliers, like [DigiKey](https://www.digikey.com/), [Mouser](https://www.mouser.com/), [Newark](https://www.newark.com/), [Arrow](https://www.arrow.com/), and [LCSC](https://lcsc.com/). These suppliers have components broken out into categories based on their function, and allow you to use powerful search filters to find exactly the part you need. My personal favorite supplier is DigiKey because I find their search filters to be the easiest to use and have the most useful options. I'll use DigiKey as an example for this tutorial, but the general process will be the same for any major supplier.
+
+## Finding Your Components
+

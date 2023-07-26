@@ -3,11 +3,59 @@
 
 @import "{{ site.theme }}";
 
-span.post-data {
-    font-style: italic;
+$light-text-color: #999;
+
+%small {
     font-size: 0.8em;
-    color: #999;
+    font-style: italic;
+    color: $light-text-color;
 }
+
+div.series-data {
+    @extend %small;
+
+    border-top: 1px solid $light-text-color;
+    text-align: center;
+}
+
+div.series-data p {
+    margin-bottom: 0.5em;
+}
+
+div.series-data ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+div.series-data ul li {
+    display: inline-block;
+    margin-right: 1em;
+    margin-left: 1em;
+}
+
+h2.subtitle {
+    margin-top: 0;
+}
+
+h2.subtitle::before {
+    content: "— " !important;
+    margin-left: 0 !important;
+}
+
+img.project-image {
+    max-width: 100%;
+    height: auto;
+}
+
+span.figure {
+    @extend %small;
+}
+
+span.post-data {
+    @extend %small;
+}
+
 
 span.post-data::before {
     content: "(";

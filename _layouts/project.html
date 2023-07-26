@@ -1,5 +1,10 @@
 ---
-layout: base
+layout: post
 ---
+
+{% if page.image %}
+<!-- only add an image if a path is specified -->
+<img class="project-image" src="{{ page.image }}" alt="{{ page.title }}">
+{% endif %}
 
 {{ content }}

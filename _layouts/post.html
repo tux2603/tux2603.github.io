@@ -1,0 +1,66 @@
+---
+layout: base
+---
+
+{% if page.series %}
+<h1>{{ page.title }}</h1>
+<h2 class="subtitle">{{ page.series.title }} - Part {{ page.series.index }}</h2>
+{% else %}
+<h1>{{ page.title }}</h1>
+{% endif %}
+
+<p>
+    <span class="post-data">{{ page.categories }}, <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time></span>
+</p>
+
+{{ content }}
+
+{% if page.series %}
+<div class="series-data">
+    <p>
+        This post is part {{page.series.index}} of the "{{page.series.title}}" series
+    </p>
+
+    {% assign prev_index = page.series.index | minus: 1 %}
+    {% assign next_index = page.series.index | plus: 1 %}
+    {% assign neighbors_found = 0 %}
+
+    {% for post in site.posts %}
+        {% if post.series.title == page.series.title %}
+            {% if post.series.index == prev_index %}
+                {% assign prev_post = post %}
+                {% assign neighbors_found = neighbors_found | plus: 1 %}
+            {% endif %}
+
+            {% if post.series.index == next_index %}
+                {% assign next_post = post %}
+                {% assign neighbors_found = neighbors_found | plus: 1 %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+        
+
+    {% if neighbors_found > 0 %}
+    <ul class="series-nav">
+        {% if prev_post %}
+        <li>
+            <a href="{{ prev_post.url }}">
+                <span class="series-nav-label">Previous:</span>
+                <span class="series-nav-title">{{ prev_post.title }}</span>
+            </a>
+        </li>
+        {% endif %}
+
+        {% if next_post %}
+        <li>
+            <a href="{{ next_post.url }}">
+                <span class="series-nav-label">Next:</span>
+                <span class="series-nav-title">{{ next_post.title }}</span>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+    {% endif %}
+
+</div>
+{% endif %}
